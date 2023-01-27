@@ -59,8 +59,8 @@
 
 
   <script>
-        var slow = window.prompt("Quantos ms são desejados entre um frame e outro?(500=fácil, 300=padrão, 100=difícil)")
-        var gameSize = window.prompt("Qual o tamanho desejado para o jogo?(O padrão é 10)")
+        var slow = Number(window.prompt("Quantos ms são desejados entre um frame e outro?(500=fácil, 300=padrão, 100=difícil)"))
+        var gameSize = Number(window.prompt("Qual o tamanho desejado para o jogo?(O padrão é 10)"))
         var parar = false
         var applePixel = 0
         var size = gameSize + 2
