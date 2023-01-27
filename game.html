@@ -71,11 +71,12 @@
         var refreshIntervalId
         const CollorsPallete = [{ "r": 0, "g": 150, "b": 255 }, { "r": 0, "g": 160, "b": 255 }, { "r": 255, "g": 40, "b": 0 }, { "r": 118, "g": 238, "b": 0 }, { "r": 0, "g": 0, "b": 0 }]
         var button = document.getElementById("button")
+        var scores = []
 
         function s() {
             button.innerHTML = " "
             parar = false
-            scores = [0]
+            
             applePixel = 0
             size = gameSize + 2
             lastKeyPressed = "ar"
@@ -163,18 +164,16 @@
         }
 
         function endGame() {
-            scores.push(snake.length)
-            document.getElementById('espaço').innerHTML = 'A cobra morreu, sua pontuação foi: ' + (snake.length - 1)
+            document.getElementById('espaço').innerHTML = 'A cobra morreu, sua pontuação foi: ' + (snake.length - 1) + '<br>As pontuações anteriores foram:'+scores+'A sua maior pontuação foi:'+
+            scores.push(snake.length - 1)
             button.innerHTML = '<input type="button" value="tentar de novo" onclick="s()">'
-            document.querySelector('#gameCanvas').innerHTML = "<img src='https://github.com/Adriel5/R1/blob/main/Cursos/OutrosAprendizados/Jogo%20da%20cobrinha/cobra-finge-de-morta2.jpg?raw=true'></img>"
+            document.querySelector('#gameCanvas').innerHTML = "<img src='https://raw.githubusercontent.com/Adriel5/R1/main/Cursos/OutrosAprendizados/Jogo%20da%20cobrinha/cobra-finge-de-morta2.jpg'></img>"
             parar = true
         }
 
         function checkBarrier() {
             var barrierEstimatedSize = (size - 1) * 4
             var barrierRealSize = 0
-            //if ([snake[0]])
-            console.log('é a barreira')
             for (var j = 0; j < gamePixelsArray.length; j++) {
                 if (gamePixelsArray[j] == 4) {
                     barrierRealSize++
