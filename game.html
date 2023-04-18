@@ -46,6 +46,7 @@
             border: 0;
             background-color: rgb(124, 252, 0);
         }
+
     </style>use WASD para se mover, não encoste nas barreiras e nem na própria cobra, seu único objetivo é comer as maçãs
 </head>
 
@@ -59,8 +60,16 @@
 
 
   <script>
-        var slow = Number(window.prompt("Quantos ms são desejados entre um frame e outro?(500=fácil, 300=padrão, 100=difícil)"))
-        var gameSize = Number(window.prompt("Qual o tamanho desejado para o jogo?(O padrão é 10)"))
+    var gameSize
+    var slow
+        var debug=true
+        if(debug==true){
+            slow=300
+            gameSize=10
+        } else if(debug==false){
+            slow = Number(window.prompt("Quantos ms são desejados entre um frame e outro?(500=fácil, 300=padrão, 100=difícil)"))
+            gameSize = Number(window.prompt("Qual o tamanho desejado para o jogo?(O padrão é 10)"))
+        }
         var parar = false
         var applePixel = 0
         var size = gameSize + 2
@@ -69,7 +78,7 @@
         var snake
         var gamePixelsArray = []
         var refreshIntervalId
-        const CollorsPallete = [{ "r": 0, "g": 150, "b": 255 }, { "r": 0, "g": 160, "b": 255 }, { "r": 255, "g": 40, "b": 0 }, { "r": 118, "g": 238, "b": 0 }, { "r": 0, "g": 0, "b": 0 }]
+        const CollorsPallete = ["background-color: rgb(0, 150, 255);", "background-color: rgb(0, 160, 255);", "background-image: url(maçã.jpg);", "background-image: url(grama.jpg);", "background-color: black"]
         var button = document.getElementById("button")
         var scores = []
 
@@ -234,7 +243,7 @@
                     } else {
                         const color = CollorsPallete[objNoPixel]
                         const colorString = `${color.r},${color.g},${color.b}`
-                        html += `<td class="pixel" style="background-color: rgb(${colorString})">`
+                        html += `<td class="pixel" style="${CollorsPallete[objNoPixel]}">`
                         html += `</td>`
                     }
 
