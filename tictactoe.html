@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            --back1: black;
+            --back2: white;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        td {
+            height: 30vh;
+            width: 30vh;
+            background-color: var(--back2);
+            border: 1vh solid var(--back1);
+        }
+
+        td>button {
+            width: 28vh;
+            height: 28vh;
+            border: none;
+        }
+
+        .squ {
+            width: 24vh;
+            height: 24vh;
+            border: 1vh solid var(--back1);
+            margin: 2vh;
+
+        }
+
+        .cir {
+            width: 24vh;
+            height: 24vh;
+            border-radius: 100%;
+            border: 1vh solid var(--back1);
+            margin: 2vh;
+
+        }
+
+        div {
+            margin: auto;
+        }
+
+        #restart{
+            height: 10vh;
+            width: 15vh;
+            color: var(--back2);
+            background-color: var(--back1);
+        }
+    </style>
+    <table id="gSpc">
+        <tr id="1">
+            <td class="s1" id="sc1"><button onclick="sc(1)"></button></td>
+            <td class="s2" id="sc2"><button onclick="sc(2)"></button></td>
+            <td class="s3" id="sc3"><button onclick="sc(3)"></button></td>
+        </tr>
+        <tr id="2">
+            <td class="s1" id="sc4"><button onclick="sc(4)"></button></td>
+            <td class="s2" id="sc5"><button onclick="sc(5)"></button></td>
+            <td class="s3" id="sc6"><button onclick="sc(6)"></button></td>
+        </tr>
+        <tr id="3">
+            <td class="s1" id="sc7"><button onclick="sc(7)"></button></td>
+            <td class="s2" id="sc8"><button onclick="sc(8)"></button></td>
+            <td class="s3" id="sc9"><button onclick="sc(9)"></button></td>
+        </tr>
+    </table>
+</body>
+<script>
+
+    var tn = 0,
+        turn = "cir",
+        cirP = [],
+        squP = [],
+        table = document.getElementById("gSpc"),
+        ptn = 0
+    function restart() {
+        ptn = 0
+        cirP = []
+        squP = []
+        tn = 0
+        turn = "cir"
+        table.innerHTML = `<tr id="1">
+                <td class="s1" id="sc1"><button onclick="sc(1)"></button></td>
+                <td class="s2" id="sc2"><button onclick="sc(2)"></button></td>
+                <td class="s3" id="sc3"><button onclick="sc(3)"></button></td>
+            </tr>
+            <tr id="2">
+                <td class="s1" id="sc4"><button onclick="sc(4)"></button></td>
+                <td class="s2" id="sc5"><button onclick="sc(5)"></button></td>
+                <td class="s3" id="sc6"><button onclick="sc(6)"></button></td>
+            </tr>
+            <tr id="3">
+                <td class="s1" id="sc7"><button onclick="sc(7)"></button></td>
+                <td class="s2" id="sc8"><button onclick="sc(8)"></button></td>
+                <td class="s3" id="sc9"><button onclick="sc(9)"></button></td>
+            </tr>`
+    }
+    function won(champ) {
+        var winner
+        if (champ === 0) {
+            winner = 'square'
+        } else {
+            winner = 'circle'
+        }
+        table.innerHTML = `<tr><th>The winner is ${winner}</th></tr><tr><th><button onclick="restart()" id="restart">Restart</button></th></tr>`
+    }
+    function certify(mrkds) {
+        if (mrkds.length > 2) {
+            if (mrkds.includes(5)) {
+                if (mrkds.includes(1) && mrkds.includes(9)) { won(tn) }
+                else if (mrkds.includes(2) && mrkds.includes(8)) { won(tn) }
+                else if (mrkds.includes(3) && mrkds.includes(7)) { won(tn) }
+                else if (mrkds.includes(4) && mrkds.includes(6)) { won(tn) }
+            }
+            else if (mrkds.includes(1)) {
+                if (mrkds.includes(2) && mrkds.includes(3)) { won(tn) }
+                else if (mrkds.includes(4) && mrkds.includes(7)) { won(tn) }
+            }
+            else if (mrkds.includes(9)) {
+                if (mrkds.includes(7) && mrkds.includes(8)) { won(tn) }
+                else if (mrkds.includes(3) && mrkds.includes(6)) { won(tn) }
+            }
+            else { }
+
+        }
+    }
+
+    function sc(sqrN) {
+        var actSqr = "sc" + sqrN
+        var squT = document.getElementById(actSqr)
+        squT.innerHTML = `<div class=${turn}></div>`
+        ptn++
+        if(ptn===9){
+            table.innerHTML = `<tr><th>You tied</th></tr><tr><th><button onclick="restart()" id="restart">Restart</button></th></tr>`
+        }
+        else if (tn === 0) {
+            cirP.push(sqrN)
+            tn++
+            turn = "squ"
+            certify(cirP)
+
+        } else {
+            squP.push(sqrN)
+            tn--
+            turn = "cir"
+            certify(squP)
+        }  
+
+
+    }
+</script>
+
+</html>
