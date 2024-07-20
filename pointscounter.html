@@ -11,13 +11,13 @@
     <div class="hor">
     <div id="teaml" class="ver">
       <h1 id="ptsl">0</h1>
-      <button type="button" class="pb high" onclick="plus(ptsl, sptsl)">+</button>
-      <button type="button" class="pb low" onclick="minus(ptsl, sptsl)">-</button>
+      <button type="button" class="pb high" onclick="plusl()">+</button>
+      <button type="button" class="pb low" onclick="minusl()">-</button>
     </div>
     <div id="teamr" class="ver">
       <h1 id="ptsr">0</h1></div>
-      <button type="button" class="pb high" onclick="plus(ptsr, sptsr)">+</button>
-      <button type="button" class="pb low" onclick="minus(ptsr, sptsr)">-</button>
+      <button type="button" class="pb high" onclick="plusr()">+</button>
+      <button type="button" class="pb low" onclick="minusr()">-</button>
     </div>
   </div>
     <button type="button" onclick="zerar()">Zerar</button>
@@ -49,14 +49,18 @@
     ptsl = 0
   }
 
-  plus(tpts, stpts){
-    tpts++
-    stps.innerText = tpts
-  }
-  minus(tpts, stpts){
-    tpts--
-    stpts.innerText = tpts
-  }
+  plusl(){
+  ptsl++
+  sptsl.innerHTML = ptsl
+}
+  plusr(){
+  ptsl++
+  sptsr.innerHTML = ptsr
+}
+  minusl(){
+}
+  minusr(){
+}
   </script>
 </body>
 </html>
