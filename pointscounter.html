@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta lang="pt-BR">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>gc</title>
+</head>
+<body>
+  <div id="cont1" class="ver">
+    <div class="hor">
+    <div id="teaml" class="ver">
+      <h1 id="ptsl">0</h1>
+      <button type="button" class="pb high" onclick="plus(ptsl, sptsl)">+</button>
+      <button type="button" class="pb low" onclick="minus(ptsl, sptsl)">-</button>
+    </div>
+    <div id="teamr" class="ver">
+      <h1 id="ptsr">0</h1></div>
+      <button type="button" class="pb high" onclick="plus(ptsr, sptsr)">+</button>
+      <button type="button" class="pb low" onclick="minus(ptsr, sptsr)">-</button>
+    </div>
+  </div>
+    <button type="button" onclick="zerar()">Zerar</button>
+  </div>
+  <style>
+  html, body{
+    margin: 0;
+    padding: 0;
+  }
+  .ver{
+    display: flex;
+    flex-direction: column;
+  }
+  .hor{
+    display: flex;
+    flex-direction: row;
+  }
+  #cont1{
+    align-items: center;
+  </style>
+  <script>
+  var ptsr = 0,
+      ptsl = 0,
+      sptsl = document.getElementById("ptsl"),
+      sptsr = document.getElementById("ptsr")
+
+  function zerar(){
+    ptsr = 0
+    ptsl = 0
+  }
+
+  plus(tpts, stpts){
+    tpts++
+    stps.innerText = tpts
+  }
+  minus(tpts, stpts){
+    tpts--
+    stpts.innerText = tpts
+  }
+  </script>
+</body>
+</html>
